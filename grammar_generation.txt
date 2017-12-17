@@ -1,0 +1,1044 @@
+/* Here 'e' is epsilon */
+/* Spawning 101 */
+
+A1 -> $$ start A2
+A2 -> 11 A2
+A2 -> 00 A2
+A2 -> 11 A2
+A3 -> eB A3
+A3 -> eB A3
+A3 -> eB A3
+A3 -> eB A3
+A3 -> eB A3
+A3 -> eB A3
+A3 -> eB A3
+A3 -> eB A3
+A3 -> eB A3
+A3 -> eB A3
+A3 -> eB A3
+A3 -> eB A3
+A3 -> @@ A3
+A3 -> e
+start 11 -> 11 findZero
+findZero 00 -> 00 findBlank
+00 findBlank 11 -> temp 00 11
+11 temp 00 -> beginCopying 11 00
+beginCopying 11 -> 11 beginCopying
+beginCopying 00 -> 00 beginCopying
+beginCopying 11 -> 11 beginCopying
+11 beginCopying eB -> backToStart 11 eC
+00 backToStart 11 -> backToStart 00 11
+11 backToStart 00 -> backToStart 11 00
+$$ backToStart 11 -> backToStart $$ 11
+backToStart $$ -> $$ createCopy
+createCopy 11 -> 1# copyOne
+copyOne 00 -> 00 copyOne
+copyOne 11 -> 11 copyOne
+copyOne eC -> eC copyOne
+eC copyOne eB -> backToSharpOne eC e1
+11 backToSharpOne eC -> backToSharpOne 11 eC
+00 backToSharpOne 11 -> backToSharpOne 00 11
+1# backToSharpOne 00 -> backToSharpOne 1# 00
+backToSharpOne 1# -> 11 createCopy
+createCopy 00 -> 0# copyZero
+copyZero 11 -> 11 copyZero
+copyZero eC -> eC copyZero
+copyZero e1 -> e1 copyZero
+e1 copyZero eB -> backToSharpZero e1 e0
+eC backToSharpZero e1 -> backToSharpZero eC e1
+11 backToSharpZero eC -> backToSharpZero 11 eC
+0# backToSharpZero 11 -> backToSharpZero 0# 11
+backToSharpZero 0# -> 00 createCopy
+createCopy 11 -> 1# copyOne
+copyOne eC -> eC copyOne
+copyOne e1 -> e1 copyOne
+copyOne e0 -> e0 copyOne
+e0 copyOne eB -> backToSharpOne e0 e1
+e1 backToSharpOne e0 -> backToSharpOne e1 e0
+eC backToSharpOne e1 -> backToSharpOne eC e1
+1# backToSharpOne eC -> backToSharpOne 1# eC
+backToSharpOne 1# -> 11 createCopy
+createCopy eC -> eC goToPlaceForDivider
+goToPlaceForDivider e1 -> e1 goToPlaceForDivider
+goToPlaceForDivider e0 -> e0 goToPlaceForDivider
+goToPlaceForDivider e1 -> e1 goToPlaceForDivider
+e1 goToPlaceForDivider eB -> backToFirstC e1 eD
+e0 backToFirstC e1 -> backToFirstC e0 e1
+e1 backToFirstC e0 -> backToFirstC e1 e0
+eC backToFirstC e1 -> backToFirstC eC e1
+backToFirstC eC -> eC createCopy
+createCopy e1 -> e# copyOne
+copyOne e0 -> e0 copyOne
+copyOne e1 -> e1 copyOne
+copyOne eD -> eD copyOne
+eD copyOne eB -> backToSharpOne eD e1
+e1 backToSharpOne eD -> backToSharpOne e1 eD
+e0 backToSharpOne e1 -> backToSharpOne e0 e1
+e# backToSharpOne e0 -> backToSharpOne e# e0
+backToSharpOne e# -> e1 createCopy
+createCopy e0 -> e# copyZero
+copyZero e1 -> e1 copyZero
+copyZero eD -> eD copyZero
+copyZero e1 -> e1 copyZero
+e1 copyZero eB -> backToSharpZero e1 e0
+eD backToSharpZero e1 -> backToSharpZero eD e1
+e1 backToSharpZero eD -> backToSharpZero e1 eD
+e# backToSharpZero e1 -> backToSharpZero e# e1
+backToSharpZero e# -> e0 createCopy
+createCopy e1 -> e# copyOne
+copyOne eD -> eD copyOne
+copyOne e1 -> e1 copyOne
+copyOne e0 -> e0 copyOne
+e0 copyOne eB -> backToSharpOne e0 e1
+e1 backToSharpOne e0 -> backToSharpOne e1 e0
+eD backToSharpOne e1 -> backToSharpOne eD e1
+e# backToSharpOne eD -> backToSharpOne e# eD
+backToSharpOne e# -> e1 createCopy
+createCopy eD -> eD nullifier
+nullifier e1 -> e0 nullifier
+nullifier e0 -> e0 nullifier
+nullifier e1 -> e0 nullifier
+e0 nullifier eB -> initDivider e0 eE
+e0 initDivider e0 -> initDividerByTwo e0 e0
+e0 initDividerByTwo e0 -> backToD e0 e1
+eD backToD e0 -> backToD eD e0
+backToD eD -> eD createCopy
+createCopy e0 -> e# copyZero
+copyZero e1 -> e1 copyZero
+copyZero e0 -> e0 copyZero
+copyZero eE -> eE copyZero
+eE copyZero eB -> backToSharpZero eE e0
+e0 backToSharpZero eE -> backToSharpZero e0 eE
+e1 backToSharpZero e0 -> backToSharpZero e1 e0
+e# backToSharpZero e1 -> backToSharpZero e# e1
+backToSharpZero e# -> e0 createCopy
+createCopy e1 -> e# copyOne
+copyOne e0 -> e0 copyOne
+copyOne eE -> eE copyOne
+copyOne e0 -> e0 copyOne
+e0 copyOne eB -> backToSharpOne e0 e1
+eE backToSharpOne e0 -> backToSharpOne eE e0
+e0 backToSharpOne eE -> backToSharpOne e0 eE
+e# backToSharpOne e0 -> backToSharpOne e# e0
+backToSharpOne e# -> e1 createCopy
+createCopy e0 -> e# copyZero
+copyZero eE -> eE copyZero
+copyZero e0 -> e0 copyZero
+copyZero e1 -> e1 copyZero
+e1 copyZero eB -> backToSharpZero e1 e0
+e0 backToSharpZero e1 -> backToSharpZero e0 e1
+eE backToSharpZero e0 -> backToSharpZero eE e0
+e# backToSharpZero eE -> backToSharpZero e# eE
+backToSharpZero e# -> e0 createCopy
+createCopy eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+e0 gotoLastE @@ -> dec e0 @@
+e1 dec e0 -> dec e1 e1
+e0 dec e1 -> gotoMark e0 e0
+eE gotoMark e0 -> gotoMark eE e0
+e0 gotoMark eE -> gotoDecC e0 eE
+e1 gotoDecC e0 -> gotoDecC e1 e0
+e0 gotoDecC e1 -> gotoDecC e0 e1
+eD gotoDecC e0 -> gotoDecC eD e0
+e1 gotoDecC eD -> dec e1 eD
+e0 dec e1 -> gotoMark e0 e0
+e1 gotoMark e0 -> gotoMark e1 e0
+eC gotoMark e1 -> gotoMark eC e1
+gotoMark eC -> eC ifZero
+ifZero e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE eD -> eD gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+e1 gotoLastE @@ -> dec e1 @@
+e0 dec e1 -> gotoMark e0 e0
+e0 gotoMark e0 -> gotoMark e0 e0
+eE gotoMark e0 -> gotoMark eE e0
+e0 gotoMark eE -> gotoDecC e0 eE
+e1 gotoDecC e0 -> gotoDecC e1 e0
+e0 gotoDecC e1 -> gotoDecC e0 e1
+eD gotoDecC e0 -> gotoDecC eD e0
+e0 gotoDecC eD -> dec e0 eD
+e0 dec e0 -> dec e0 e1
+e1 dec e0 -> dec e1 e1
+eC dec e1 -> gotoMark eC e0
+gotoMark eC -> eC ifZero
+ifZero e0 -> e0 ifZero
+ifZero e1 -> e1 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE eD -> eD gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+e0 gotoLastE @@ -> dec e0 @@
+e0 dec e0 -> dec e0 e1
+e0 dec e0 -> dec e0 e1
+eE dec e0 -> dec eE e1
+dec eE -> eE replaceWithBlanks
+replaceWithBlanks e1 -> eB replaceWithBlanks
+replaceWithBlanks e1 -> eB replaceWithBlanks
+replaceWithBlanks e1 -> eB replaceWithBlanks
+eB replaceWithBlanks @@ -> backToDFromRight eB @@
+eB backToDFromRight eB -> backToDFromRight eB eB
+eB backToDFromRight eB -> backToDFromRight eB eB
+eE backToDFromRight eB -> backToDFromRight eE eB
+e0 backToDFromRight eE -> backToDFromRight e0 eE
+e1 backToDFromRight e0 -> backToDFromRight e1 e0
+e0 backToDFromRight e1 -> backToDFromRight e0 e1
+eD backToDFromRight e0 -> backToDFromRight eD e0
+backToDFromRight eD -> eD createCopy
+createCopy e0 -> e# copyZero
+copyZero e1 -> e1 copyZero
+copyZero e0 -> e0 copyZero
+copyZero eE -> eE copyZero
+eE copyZero eB -> backToSharpZero eE e0
+e0 backToSharpZero eE -> backToSharpZero e0 eE
+e1 backToSharpZero e0 -> backToSharpZero e1 e0
+e# backToSharpZero e1 -> backToSharpZero e# e1
+backToSharpZero e# -> e0 createCopy
+createCopy e1 -> e# copyOne
+copyOne e0 -> e0 copyOne
+copyOne eE -> eE copyOne
+copyOne e0 -> e0 copyOne
+e0 copyOne eB -> backToSharpOne e0 e1
+eE backToSharpOne e0 -> backToSharpOne eE e0
+e0 backToSharpOne eE -> backToSharpOne e0 eE
+e# backToSharpOne e0 -> backToSharpOne e# e0
+backToSharpOne e# -> e1 createCopy
+createCopy e0 -> e# copyZero
+copyZero eE -> eE copyZero
+copyZero e0 -> e0 copyZero
+copyZero e1 -> e1 copyZero
+e1 copyZero eB -> backToSharpZero e1 e0
+e0 backToSharpZero e1 -> backToSharpZero e0 e1
+eE backToSharpZero e0 -> backToSharpZero eE e0
+e# backToSharpZero eE -> backToSharpZero e# eE
+backToSharpZero e# -> e0 createCopy
+createCopy eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+e0 gotoLastE @@ -> dec e0 @@
+e1 dec e0 -> dec e1 e1
+e0 dec e1 -> gotoMark e0 e0
+eE gotoMark e0 -> gotoMark eE e0
+e0 gotoMark eE -> gotoDecC e0 eE
+e1 gotoDecC e0 -> gotoDecC e1 e0
+e0 gotoDecC e1 -> gotoDecC e0 e1
+eD gotoDecC e0 -> gotoDecC eD e0
+e1 gotoDecC eD -> dec e1 eD
+e1 dec e1 -> gotoMark e1 e0
+e0 gotoMark e1 -> gotoMark e0 e1
+eC gotoMark e0 -> gotoMark eC e0
+gotoMark eC -> eC ifZero
+ifZero e0 -> e0 ifZero
+ifZero e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE eD -> eD gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+e1 gotoLastE @@ -> dec e1 @@
+e0 dec e1 -> gotoMark e0 e0
+e0 gotoMark e0 -> gotoMark e0 e0
+eE gotoMark e0 -> gotoMark eE e0
+e0 gotoMark eE -> gotoDecC e0 eE
+e1 gotoDecC e0 -> gotoDecC e1 e0
+e0 gotoDecC e1 -> gotoDecC e0 e1
+eD gotoDecC e0 -> gotoDecC eD e0
+e0 gotoDecC eD -> dec e0 eD
+e1 dec e0 -> dec e1 e1
+e0 dec e1 -> gotoMark e0 e0
+eC gotoMark e0 -> gotoMark eC e0
+gotoMark eC -> eC ifZero
+ifZero e0 -> e0 ifZero
+ifZero e0 -> e0 ifZero
+ifZero e1 -> e1 gotoLastE
+gotoLastE eD -> eD gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+e0 gotoLastE @@ -> dec e0 @@
+e0 dec e0 -> dec e0 e1
+e0 dec e0 -> dec e0 e1
+eE dec e0 -> dec eE e1
+dec eE -> eE replaceWithBlanks
+replaceWithBlanks e1 -> eB replaceWithBlanks
+replaceWithBlanks e1 -> eB replaceWithBlanks
+replaceWithBlanks e1 -> eB replaceWithBlanks
+eB replaceWithBlanks @@ -> backToDFromRight eB @@
+eB backToDFromRight eB -> backToDFromRight eB eB
+eB backToDFromRight eB -> backToDFromRight eB eB
+eE backToDFromRight eB -> backToDFromRight eE eB
+e0 backToDFromRight eE -> backToDFromRight e0 eE
+e1 backToDFromRight e0 -> backToDFromRight e1 e0
+e0 backToDFromRight e1 -> backToDFromRight e0 e1
+eD backToDFromRight e0 -> backToDFromRight eD e0
+backToDFromRight eD -> eD createCopy
+createCopy e0 -> e# copyZero
+copyZero e1 -> e1 copyZero
+copyZero e0 -> e0 copyZero
+copyZero eE -> eE copyZero
+eE copyZero eB -> backToSharpZero eE e0
+e0 backToSharpZero eE -> backToSharpZero e0 eE
+e1 backToSharpZero e0 -> backToSharpZero e1 e0
+e# backToSharpZero e1 -> backToSharpZero e# e1
+backToSharpZero e# -> e0 createCopy
+createCopy e1 -> e# copyOne
+copyOne e0 -> e0 copyOne
+copyOne eE -> eE copyOne
+copyOne e0 -> e0 copyOne
+e0 copyOne eB -> backToSharpOne e0 e1
+eE backToSharpOne e0 -> backToSharpOne eE e0
+e0 backToSharpOne eE -> backToSharpOne e0 eE
+e# backToSharpOne e0 -> backToSharpOne e# e0
+backToSharpOne e# -> e1 createCopy
+createCopy e0 -> e# copyZero
+copyZero eE -> eE copyZero
+copyZero e0 -> e0 copyZero
+copyZero e1 -> e1 copyZero
+e1 copyZero eB -> backToSharpZero e1 e0
+e0 backToSharpZero e1 -> backToSharpZero e0 e1
+eE backToSharpZero e0 -> backToSharpZero eE e0
+e# backToSharpZero eE -> backToSharpZero e# eE
+backToSharpZero e# -> e0 createCopy
+createCopy eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+e0 gotoLastE @@ -> dec e0 @@
+e1 dec e0 -> dec e1 e1
+e0 dec e1 -> gotoMark e0 e0
+eE gotoMark e0 -> gotoMark eE e0
+e0 gotoMark eE -> gotoDecC e0 eE
+e1 gotoDecC e0 -> gotoDecC e1 e0
+e0 gotoDecC e1 -> gotoDecC e0 e1
+eD gotoDecC e0 -> gotoDecC eD e0
+e1 gotoDecC eD -> dec e1 eD
+e0 dec e1 -> gotoMark e0 e0
+e0 gotoMark e0 -> gotoMark e0 e0
+eC gotoMark e0 -> gotoMark eC e0
+gotoMark eC -> eC ifZero
+ifZero e0 -> e0 ifZero
+ifZero e0 -> e0 ifZero
+ifZero e0 -> e0 ifZero
+ifZero eD -> eD moveToE
+moveToE e0 -> e0 moveToE
+moveToE e1 -> e1 moveToE
+moveToE e0 -> e0 moveToE
+moveToE eE -> eE checkEForZero
+checkEForZero e0 -> e0 checkEForZero
+checkEForZero e0 -> e0 checkEForZero
+checkEForZero e1 -> e1 massErase
+e1 massErase @@ -> eraseE e1 @@
+e0 eraseE e1 -> eraseE e0 eB
+e0 eraseE e0 -> eraseE e0 eB
+eE eraseE e0 -> eraseE eE eB
+e0 eraseE eE -> prepEraseC e0 eE
+e1 prepEraseC e0 -> prepEraseC e1 e0
+e0 prepEraseC e1 -> prepEraseC e0 e1
+eD prepEraseC e0 -> prepEraseC eD e0
+e0 prepEraseC eD -> eraseC e0 eD
+e0 eraseC e0 -> eraseC e0 eB
+e0 eraseC e0 -> eraseC e0 eB
+eC eraseC e0 -> eraseC eC eB
+11 eraseC eC -> backToStart 11 eX
+00 backToStart 11 -> backToStart 00 11
+11 backToStart 00 -> backToStart 11 00
+$$ backToStart 11 -> backToStart $$ 11
+backToStart $$ -> $$ createCopy
+createCopy 11 -> 1# copyOne
+copyOne 00 -> 00 copyOne
+copyOne 11 -> 11 copyOne
+copyOne eX -> eX copyOne
+eX copyOne eB -> backToSharpOne eX e1
+11 backToSharpOne eX -> backToSharpOne 11 eX
+00 backToSharpOne 11 -> backToSharpOne 00 11
+1# backToSharpOne 00 -> backToSharpOne 1# 00
+backToSharpOne 1# -> 11 createCopy
+createCopy 00 -> 0# copyZero
+copyZero 11 -> 11 copyZero
+copyZero eX -> eX copyZero
+copyZero e1 -> e1 copyZero
+e1 copyZero eB -> backToSharpZero e1 e0
+eX backToSharpZero e1 -> backToSharpZero eX e1
+11 backToSharpZero eX -> backToSharpZero 11 eX
+0# backToSharpZero 11 -> backToSharpZero 0# 11
+backToSharpZero 0# -> 00 createCopy
+createCopy 11 -> 1# copyOne
+copyOne eX -> eX copyOne
+copyOne e1 -> e1 copyOne
+copyOne e0 -> e0 copyOne
+e0 copyOne eB -> backToSharpOne e0 e1
+e1 backToSharpOne e0 -> backToSharpOne e1 e0
+eX backToSharpOne e1 -> backToSharpOne eX e1
+1# backToSharpOne eX -> backToSharpOne 1# eX
+backToSharpOne 1# -> 11 createCopy
+createCopy eX -> eC forwardToLastD
+forwardToLastD e1 -> e1 forwardToLastD
+forwardToLastD e0 -> e0 forwardToLastD
+forwardToLastD e1 -> e1 forwardToLastD
+forwardToLastD eD -> eD forwardToLastD
+forwardToLastD e0 -> e0 forwardToLastD
+forwardToLastD e1 -> e1 forwardToLastD
+forwardToLastD e0 -> e0 forwardToLastD
+e0 forwardToLastD eE -> incD e0 eE
+e1 incD e0 -> checkCD e1 e1
+e0 checkCD e1 -> checkCD e0 e1
+eD checkCD e0 -> checkCD eD e0
+e1 checkCD eD -> checkCD e1 eD
+e0 checkCD e1 -> checkCD e0 e1
+e1 checkCD e0 -> checkCD e1 e0
+eC checkCD e1 -> checkCD eC e1
+checkCD eC -> eC eqCD
+eqCD e1 -> e& checkOneD
+checkOneD e0 -> e0 checkOneD
+checkOneD e1 -> e1 checkOneD
+checkOneD eD -> eD searchOne
+eD searchOne e0 -> restoreCD eD e0
+e1 restoreCD eD -> restoreCD e1 eD
+e0 restoreCD e1 -> restoreCD e0 e1
+e& restoreCD e0 -> restoreCD e& e0
+eC restoreCD e& -> restoreCD eC e1
+restoreCD eC -> eC backToDAfterInc
+backToDAfterInc e1 -> e1 backToDAfterInc
+backToDAfterInc e0 -> e0 backToDAfterInc
+backToDAfterInc e1 -> e1 backToDAfterInc
+backToDAfterInc eD -> eD createCopy
+createCopy e0 -> e# copyZero
+copyZero e1 -> e1 copyZero
+copyZero e1 -> e1 copyZero
+copyZero eE -> eE copyZero
+eE copyZero eB -> backToSharpZero eE e0
+e1 backToSharpZero eE -> backToSharpZero e1 eE
+e1 backToSharpZero e1 -> backToSharpZero e1 e1
+e# backToSharpZero e1 -> backToSharpZero e# e1
+backToSharpZero e# -> e0 createCopy
+createCopy e1 -> e# copyOne
+copyOne e1 -> e1 copyOne
+copyOne eE -> eE copyOne
+copyOne e0 -> e0 copyOne
+e0 copyOne eB -> backToSharpOne e0 e1
+eE backToSharpOne e0 -> backToSharpOne eE e0
+e1 backToSharpOne eE -> backToSharpOne e1 eE
+e# backToSharpOne e1 -> backToSharpOne e# e1
+backToSharpOne e# -> e1 createCopy
+createCopy e1 -> e# copyOne
+copyOne eE -> eE copyOne
+copyOne e0 -> e0 copyOne
+copyOne e1 -> e1 copyOne
+e1 copyOne eB -> backToSharpOne e1 e1
+e0 backToSharpOne e1 -> backToSharpOne e0 e1
+eE backToSharpOne e0 -> backToSharpOne eE e0
+e# backToSharpOne eE -> backToSharpOne e# eE
+backToSharpOne e# -> e1 createCopy
+createCopy eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+e1 gotoLastE @@ -> dec e1 @@
+e1 dec e1 -> gotoMark e1 e0
+e0 gotoMark e1 -> gotoMark e0 e1
+eE gotoMark e0 -> gotoMark eE e0
+e1 gotoMark eE -> gotoDecC e1 eE
+e1 gotoDecC e1 -> gotoDecC e1 e1
+e0 gotoDecC e1 -> gotoDecC e0 e1
+eD gotoDecC e0 -> gotoDecC eD e0
+e1 gotoDecC eD -> dec e1 eD
+e0 dec e1 -> gotoMark e0 e0
+e1 gotoMark e0 -> gotoMark e1 e0
+eC gotoMark e1 -> gotoMark eC e1
+gotoMark eC -> eC ifZero
+ifZero e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE eD -> eD gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+e0 gotoLastE @@ -> dec e0 @@
+e1 dec e0 -> dec e1 e1
+e0 dec e1 -> gotoMark e0 e0
+eE gotoMark e0 -> gotoMark eE e0
+e1 gotoMark eE -> gotoDecC e1 eE
+e1 gotoDecC e1 -> gotoDecC e1 e1
+e0 gotoDecC e1 -> gotoDecC e0 e1
+eD gotoDecC e0 -> gotoDecC eD e0
+e0 gotoDecC eD -> dec e0 eD
+e0 dec e0 -> dec e0 e1
+e1 dec e0 -> dec e1 e1
+eC dec e1 -> gotoMark eC e0
+gotoMark eC -> eC ifZero
+ifZero e0 -> e0 ifZero
+ifZero e1 -> e1 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE eD -> eD gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+e1 gotoLastE @@ -> dec e1 @@
+e0 dec e1 -> gotoMark e0 e0
+e0 gotoMark e0 -> gotoMark e0 e0
+eE gotoMark e0 -> gotoMark eE e0
+e1 gotoMark eE -> gotoDecC e1 eE
+e1 gotoDecC e1 -> gotoDecC e1 e1
+e0 gotoDecC e1 -> gotoDecC e0 e1
+eD gotoDecC e0 -> gotoDecC eD e0
+e1 gotoDecC eD -> dec e1 eD
+e1 dec e1 -> gotoMark e1 e0
+e0 gotoMark e1 -> gotoMark e0 e1
+eC gotoMark e0 -> gotoMark eC e0
+gotoMark eC -> eC ifZero
+ifZero e0 -> e0 ifZero
+ifZero e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE eD -> eD gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+e0 gotoLastE @@ -> dec e0 @@
+e0 dec e0 -> dec e0 e1
+e0 dec e0 -> dec e0 e1
+eE dec e0 -> dec eE e1
+dec eE -> eE replaceWithBlanks
+replaceWithBlanks e1 -> eB replaceWithBlanks
+replaceWithBlanks e1 -> eB replaceWithBlanks
+replaceWithBlanks e1 -> eB replaceWithBlanks
+eB replaceWithBlanks @@ -> backToDFromRight eB @@
+eB backToDFromRight eB -> backToDFromRight eB eB
+eB backToDFromRight eB -> backToDFromRight eB eB
+eE backToDFromRight eB -> backToDFromRight eE eB
+e1 backToDFromRight eE -> backToDFromRight e1 eE
+e1 backToDFromRight e1 -> backToDFromRight e1 e1
+e0 backToDFromRight e1 -> backToDFromRight e0 e1
+eD backToDFromRight e0 -> backToDFromRight eD e0
+backToDFromRight eD -> eD createCopy
+createCopy e0 -> e# copyZero
+copyZero e1 -> e1 copyZero
+copyZero e1 -> e1 copyZero
+copyZero eE -> eE copyZero
+eE copyZero eB -> backToSharpZero eE e0
+e1 backToSharpZero eE -> backToSharpZero e1 eE
+e1 backToSharpZero e1 -> backToSharpZero e1 e1
+e# backToSharpZero e1 -> backToSharpZero e# e1
+backToSharpZero e# -> e0 createCopy
+createCopy e1 -> e# copyOne
+copyOne e1 -> e1 copyOne
+copyOne eE -> eE copyOne
+copyOne e0 -> e0 copyOne
+e0 copyOne eB -> backToSharpOne e0 e1
+eE backToSharpOne e0 -> backToSharpOne eE e0
+e1 backToSharpOne eE -> backToSharpOne e1 eE
+e# backToSharpOne e1 -> backToSharpOne e# e1
+backToSharpOne e# -> e1 createCopy
+createCopy e1 -> e# copyOne
+copyOne eE -> eE copyOne
+copyOne e0 -> e0 copyOne
+copyOne e1 -> e1 copyOne
+e1 copyOne eB -> backToSharpOne e1 e1
+e0 backToSharpOne e1 -> backToSharpOne e0 e1
+eE backToSharpOne e0 -> backToSharpOne eE e0
+e# backToSharpOne eE -> backToSharpOne e# eE
+backToSharpOne e# -> e1 createCopy
+createCopy eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+e1 gotoLastE @@ -> dec e1 @@
+e1 dec e1 -> gotoMark e1 e0
+e0 gotoMark e1 -> gotoMark e0 e1
+eE gotoMark e0 -> gotoMark eE e0
+e1 gotoMark eE -> gotoDecC e1 eE
+e1 gotoDecC e1 -> gotoDecC e1 e1
+e0 gotoDecC e1 -> gotoDecC e0 e1
+eD gotoDecC e0 -> gotoDecC eD e0
+e0 gotoDecC eD -> dec e0 eD
+e1 dec e0 -> dec e1 e1
+e0 dec e1 -> gotoMark e0 e0
+eC gotoMark e0 -> gotoMark eC e0
+gotoMark eC -> eC ifZero
+ifZero e0 -> e0 ifZero
+ifZero e0 -> e0 ifZero
+ifZero e1 -> e1 gotoLastE
+gotoLastE eD -> eD gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+e0 gotoLastE @@ -> dec e0 @@
+e1 dec e0 -> dec e1 e1
+e0 dec e1 -> gotoMark e0 e0
+eE gotoMark e0 -> gotoMark eE e0
+e1 gotoMark eE -> gotoDecC e1 eE
+e1 gotoDecC e1 -> gotoDecC e1 e1
+e0 gotoDecC e1 -> gotoDecC e0 e1
+eD gotoDecC e0 -> gotoDecC eD e0
+e1 gotoDecC eD -> dec e1 eD
+e0 dec e1 -> gotoMark e0 e0
+e0 gotoMark e0 -> gotoMark e0 e0
+eC gotoMark e0 -> gotoMark eC e0
+gotoMark eC -> eC ifZero
+ifZero e0 -> e0 ifZero
+ifZero e0 -> e0 ifZero
+ifZero e0 -> e0 ifZero
+ifZero eD -> eD moveToE
+moveToE e0 -> e0 moveToE
+moveToE e1 -> e1 moveToE
+moveToE e1 -> e1 moveToE
+moveToE eE -> eE checkEForZero
+checkEForZero e0 -> e0 checkEForZero
+checkEForZero e0 -> e0 checkEForZero
+checkEForZero e1 -> e1 massErase
+e1 massErase @@ -> eraseE e1 @@
+e0 eraseE e1 -> eraseE e0 eB
+e0 eraseE e0 -> eraseE e0 eB
+eE eraseE e0 -> eraseE eE eB
+e1 eraseE eE -> prepEraseC e1 eE
+e1 prepEraseC e1 -> prepEraseC e1 e1
+e0 prepEraseC e1 -> prepEraseC e0 e1
+eD prepEraseC e0 -> prepEraseC eD e0
+e0 prepEraseC eD -> eraseC e0 eD
+e0 eraseC e0 -> eraseC e0 eB
+e0 eraseC e0 -> eraseC e0 eB
+eC eraseC e0 -> eraseC eC eB
+11 eraseC eC -> backToStart 11 eX
+00 backToStart 11 -> backToStart 00 11
+11 backToStart 00 -> backToStart 11 00
+$$ backToStart 11 -> backToStart $$ 11
+backToStart $$ -> $$ createCopy
+createCopy 11 -> 1# copyOne
+copyOne 00 -> 00 copyOne
+copyOne 11 -> 11 copyOne
+copyOne eX -> eX copyOne
+eX copyOne eB -> backToSharpOne eX e1
+11 backToSharpOne eX -> backToSharpOne 11 eX
+00 backToSharpOne 11 -> backToSharpOne 00 11
+1# backToSharpOne 00 -> backToSharpOne 1# 00
+backToSharpOne 1# -> 11 createCopy
+createCopy 00 -> 0# copyZero
+copyZero 11 -> 11 copyZero
+copyZero eX -> eX copyZero
+copyZero e1 -> e1 copyZero
+e1 copyZero eB -> backToSharpZero e1 e0
+eX backToSharpZero e1 -> backToSharpZero eX e1
+11 backToSharpZero eX -> backToSharpZero 11 eX
+0# backToSharpZero 11 -> backToSharpZero 0# 11
+backToSharpZero 0# -> 00 createCopy
+createCopy 11 -> 1# copyOne
+copyOne eX -> eX copyOne
+copyOne e1 -> e1 copyOne
+copyOne e0 -> e0 copyOne
+e0 copyOne eB -> backToSharpOne e0 e1
+e1 backToSharpOne e0 -> backToSharpOne e1 e0
+eX backToSharpOne e1 -> backToSharpOne eX e1
+1# backToSharpOne eX -> backToSharpOne 1# eX
+backToSharpOne 1# -> 11 createCopy
+createCopy eX -> eC forwardToLastD
+forwardToLastD e1 -> e1 forwardToLastD
+forwardToLastD e0 -> e0 forwardToLastD
+forwardToLastD e1 -> e1 forwardToLastD
+forwardToLastD eD -> eD forwardToLastD
+forwardToLastD e0 -> e0 forwardToLastD
+forwardToLastD e1 -> e1 forwardToLastD
+forwardToLastD e1 -> e1 forwardToLastD
+e1 forwardToLastD eE -> incD e1 eE
+e1 incD e1 -> incD e1 e0
+e0 incD e1 -> incD e0 e0
+eD incD e0 -> checkCD eD e1
+e1 checkCD eD -> checkCD e1 eD
+e0 checkCD e1 -> checkCD e0 e1
+e1 checkCD e0 -> checkCD e1 e0
+eC checkCD e1 -> checkCD eC e1
+checkCD eC -> eC eqCD
+eqCD e1 -> e& checkOneD
+checkOneD e0 -> e0 checkOneD
+checkOneD e1 -> e1 checkOneD
+checkOneD eD -> eD searchOne
+eD searchOne e1 -> backToDFromLeft eD e&
+e1 backToDFromLeft eD -> searchNextBit e1 eD
+e0 searchNextBit e1 -> searchNextBit e0 e1
+e& searchNextBit e0 -> searchNextBit e& e0
+searchNextBit e& -> e& eqCD
+eqCD e0 -> e% checkZeroD
+checkZeroD e1 -> e1 checkZeroD
+checkZeroD eD -> eD searchZero
+searchZero e& -> e& searchZero
+e& searchZero e0 -> backToDFromLeft e& e%
+eD backToDFromLeft e& -> backToDFromLeft eD e&
+e1 backToDFromLeft eD -> searchNextBit e1 eD
+e% searchNextBit e1 -> searchNextBit e% e1
+searchNextBit e% -> e% eqCD
+eqCD e1 -> e& checkOneD
+checkOneD eD -> eD searchOne
+searchOne e& -> e& searchOne
+searchOne e% -> e% searchOne
+e% searchOne e0 -> restoreCD e% e0
+e& restoreCD e% -> restoreCD e& e0
+eD restoreCD e& -> restoreCD eD e1
+e& restoreCD eD -> restoreCD e& eD
+e% restoreCD e& -> restoreCD e% e1
+e& restoreCD e% -> restoreCD e& e0
+eC restoreCD e& -> restoreCD eC e1
+restoreCD eC -> eC backToDAfterInc
+backToDAfterInc e1 -> e1 backToDAfterInc
+backToDAfterInc e0 -> e0 backToDAfterInc
+backToDAfterInc e1 -> e1 backToDAfterInc
+backToDAfterInc eD -> eD createCopy
+createCopy e1 -> e# copyOne
+copyOne e0 -> e0 copyOne
+copyOne e0 -> e0 copyOne
+copyOne eE -> eE copyOne
+eE copyOne eB -> backToSharpOne eE e1
+e0 backToSharpOne eE -> backToSharpOne e0 eE
+e0 backToSharpOne e0 -> backToSharpOne e0 e0
+e# backToSharpOne e0 -> backToSharpOne e# e0
+backToSharpOne e# -> e1 createCopy
+createCopy e0 -> e# copyZero
+copyZero e0 -> e0 copyZero
+copyZero eE -> eE copyZero
+copyZero e1 -> e1 copyZero
+e1 copyZero eB -> backToSharpZero e1 e0
+eE backToSharpZero e1 -> backToSharpZero eE e1
+e0 backToSharpZero eE -> backToSharpZero e0 eE
+e# backToSharpZero e0 -> backToSharpZero e# e0
+backToSharpZero e# -> e0 createCopy
+createCopy e0 -> e# copyZero
+copyZero eE -> eE copyZero
+copyZero e1 -> e1 copyZero
+copyZero e0 -> e0 copyZero
+e0 copyZero eB -> backToSharpZero e0 e0
+e1 backToSharpZero e0 -> backToSharpZero e1 e0
+eE backToSharpZero e1 -> backToSharpZero eE e1
+e# backToSharpZero eE -> backToSharpZero e# eE
+backToSharpZero e# -> e0 createCopy
+createCopy eE -> eE gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+e0 gotoLastE @@ -> dec e0 @@
+e0 dec e0 -> dec e0 e1
+e1 dec e0 -> dec e1 e1
+eE dec e1 -> gotoMark eE e0
+e0 gotoMark eE -> gotoDecC e0 eE
+e0 gotoDecC e0 -> gotoDecC e0 e0
+e1 gotoDecC e0 -> gotoDecC e1 e0
+eD gotoDecC e1 -> gotoDecC eD e1
+e1 gotoDecC eD -> dec e1 eD
+e0 dec e1 -> gotoMark e0 e0
+e1 gotoMark e0 -> gotoMark e1 e0
+eC gotoMark e1 -> gotoMark eC e1
+gotoMark eC -> eC ifZero
+ifZero e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE eD -> eD gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+e1 gotoLastE @@ -> dec e1 @@
+e1 dec e1 -> gotoMark e1 e0
+e0 gotoMark e1 -> gotoMark e0 e1
+eE gotoMark e0 -> gotoMark eE e0
+e0 gotoMark eE -> gotoDecC e0 eE
+e0 gotoDecC e0 -> gotoDecC e0 e0
+e1 gotoDecC e0 -> gotoDecC e1 e0
+eD gotoDecC e1 -> gotoDecC eD e1
+e0 gotoDecC eD -> dec e0 eD
+e0 dec e0 -> dec e0 e1
+e1 dec e0 -> dec e1 e1
+eC dec e1 -> gotoMark eC e0
+gotoMark eC -> eC ifZero
+ifZero e0 -> e0 ifZero
+ifZero e1 -> e1 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE eD -> eD gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+e0 gotoLastE @@ -> dec e0 @@
+e1 dec e0 -> dec e1 e1
+e0 dec e1 -> gotoMark e0 e0
+eE gotoMark e0 -> gotoMark eE e0
+e0 gotoMark eE -> gotoDecC e0 eE
+e0 gotoDecC e0 -> gotoDecC e0 e0
+e1 gotoDecC e0 -> gotoDecC e1 e0
+eD gotoDecC e1 -> gotoDecC eD e1
+e1 gotoDecC eD -> dec e1 eD
+e1 dec e1 -> gotoMark e1 e0
+e0 gotoMark e1 -> gotoMark e0 e1
+eC gotoMark e0 -> gotoMark eC e0
+gotoMark eC -> eC ifZero
+ifZero e0 -> e0 ifZero
+ifZero e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE eD -> eD gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+e1 gotoLastE @@ -> dec e1 @@
+e0 dec e1 -> gotoMark e0 e0
+e0 gotoMark e0 -> gotoMark e0 e0
+eE gotoMark e0 -> gotoMark eE e0
+e0 gotoMark eE -> gotoDecC e0 eE
+e0 gotoDecC e0 -> gotoDecC e0 e0
+e1 gotoDecC e0 -> gotoDecC e1 e0
+eD gotoDecC e1 -> gotoDecC eD e1
+e0 gotoDecC eD -> dec e0 eD
+e1 dec e0 -> dec e1 e1
+e0 dec e1 -> gotoMark e0 e0
+eC gotoMark e0 -> gotoMark eC e0
+gotoMark eC -> eC ifZero
+ifZero e0 -> e0 ifZero
+ifZero e0 -> e0 ifZero
+ifZero e1 -> e1 gotoLastE
+gotoLastE eD -> eD gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE eE -> eE gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+e0 gotoLastE @@ -> dec e0 @@
+e0 dec e0 -> dec e0 e1
+e0 dec e0 -> dec e0 e1
+eE dec e0 -> dec eE e1
+dec eE -> eE replaceWithBlanks
+replaceWithBlanks e1 -> eB replaceWithBlanks
+replaceWithBlanks e1 -> eB replaceWithBlanks
+replaceWithBlanks e1 -> eB replaceWithBlanks
+eB replaceWithBlanks @@ -> backToDFromRight eB @@
+eB backToDFromRight eB -> backToDFromRight eB eB
+eB backToDFromRight eB -> backToDFromRight eB eB
+eE backToDFromRight eB -> backToDFromRight eE eB
+e0 backToDFromRight eE -> backToDFromRight e0 eE
+e0 backToDFromRight e0 -> backToDFromRight e0 e0
+e1 backToDFromRight e0 -> backToDFromRight e1 e0
+eD backToDFromRight e1 -> backToDFromRight eD e1
+backToDFromRight eD -> eD createCopy
+createCopy e1 -> e# copyOne
+copyOne e0 -> e0 copyOne
+copyOne e0 -> e0 copyOne
+copyOne eE -> eE copyOne
+eE copyOne eB -> backToSharpOne eE e1
+e0 backToSharpOne eE -> backToSharpOne e0 eE
+e0 backToSharpOne e0 -> backToSharpOne e0 e0
+e# backToSharpOne e0 -> backToSharpOne e# e0
+backToSharpOne e# -> e1 createCopy
+createCopy e0 -> e# copyZero
+copyZero e0 -> e0 copyZero
+copyZero eE -> eE copyZero
+copyZero e1 -> e1 copyZero
+e1 copyZero eB -> backToSharpZero e1 e0
+eE backToSharpZero e1 -> backToSharpZero eE e1
+e0 backToSharpZero eE -> backToSharpZero e0 eE
+e# backToSharpZero e0 -> backToSharpZero e# e0
+backToSharpZero e# -> e0 createCopy
+createCopy e0 -> e# copyZero
+copyZero eE -> eE copyZero
+copyZero e1 -> e1 copyZero
+copyZero e0 -> e0 copyZero
+e0 copyZero eB -> backToSharpZero e0 e0
+e1 backToSharpZero e0 -> backToSharpZero e1 e0
+eE backToSharpZero e1 -> backToSharpZero eE e1
+e# backToSharpZero eE -> backToSharpZero e# eE
+backToSharpZero e# -> e0 createCopy
+createCopy eE -> eE gotoLastE
+gotoLastE e1 -> e1 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+gotoLastE e0 -> e0 gotoLastE
+e0 gotoLastE @@ -> dec e0 @@
+e0 dec e0 -> dec e0 e1
+e1 dec e0 -> dec e1 e1
+eE dec e1 -> gotoMark eE e0
+e0 gotoMark eE -> gotoDecC e0 eE
+e0 gotoDecC e0 -> gotoDecC e0 e0
+e1 gotoDecC e0 -> gotoDecC e1 e0
+eD gotoDecC e1 -> gotoDecC eD e1
+e1 gotoDecC eD -> dec e1 eD
+e0 dec e1 -> gotoMark e0 e0
+e0 gotoMark e0 -> gotoMark e0 e0
+eC gotoMark e0 -> gotoMark eC e0
+gotoMark eC -> eC ifZero
+ifZero e0 -> e0 ifZero
+ifZero e0 -> e0 ifZero
+ifZero e0 -> e0 ifZero
+ifZero eD -> eD moveToE
+moveToE e1 -> e1 moveToE
+moveToE e0 -> e0 moveToE
+moveToE e0 -> e0 moveToE
+moveToE eE -> eE checkEForZero
+checkEForZero e0 -> e0 checkEForZero
+checkEForZero e1 -> e1 massErase
+massErase e1 -> e1 massErase
+e1 massErase @@ -> eraseE e1 @@
+e1 eraseE e1 -> eraseE e1 eB
+e0 eraseE e1 -> eraseE e0 eB
+eE eraseE e0 -> eraseE eE eB
+e0 eraseE eE -> prepEraseC e0 eE
+e0 prepEraseC e0 -> prepEraseC e0 e0
+e1 prepEraseC e0 -> prepEraseC e1 e0
+eD prepEraseC e1 -> prepEraseC eD e1
+e0 prepEraseC eD -> eraseC e0 eD
+e0 eraseC e0 -> eraseC e0 eB
+e0 eraseC e0 -> eraseC e0 eB
+eC eraseC e0 -> eraseC eC eB
+11 eraseC eC -> backToStart 11 eX
+00 backToStart 11 -> backToStart 00 11
+11 backToStart 00 -> backToStart 11 00
+$$ backToStart 11 -> backToStart $$ 11
+backToStart $$ -> $$ createCopy
+createCopy 11 -> 1# copyOne
+copyOne 00 -> 00 copyOne
+copyOne 11 -> 11 copyOne
+copyOne eX -> eX copyOne
+eX copyOne eB -> backToSharpOne eX e1
+11 backToSharpOne eX -> backToSharpOne 11 eX
+00 backToSharpOne 11 -> backToSharpOne 00 11
+1# backToSharpOne 00 -> backToSharpOne 1# 00
+backToSharpOne 1# -> 11 createCopy
+createCopy 00 -> 0# copyZero
+copyZero 11 -> 11 copyZero
+copyZero eX -> eX copyZero
+copyZero e1 -> e1 copyZero
+e1 copyZero eB -> backToSharpZero e1 e0
+eX backToSharpZero e1 -> backToSharpZero eX e1
+11 backToSharpZero eX -> backToSharpZero 11 eX
+0# backToSharpZero 11 -> backToSharpZero 0# 11
+backToSharpZero 0# -> 00 createCopy
+createCopy 11 -> 1# copyOne
+copyOne eX -> eX copyOne
+copyOne e1 -> e1 copyOne
+copyOne e0 -> e0 copyOne
+e0 copyOne eB -> backToSharpOne e0 e1
+e1 backToSharpOne e0 -> backToSharpOne e1 e0
+eX backToSharpOne e1 -> backToSharpOne eX e1
+1# backToSharpOne eX -> backToSharpOne 1# eX
+backToSharpOne 1# -> 11 createCopy
+createCopy eX -> eC forwardToLastD
+forwardToLastD e1 -> e1 forwardToLastD
+forwardToLastD e0 -> e0 forwardToLastD
+forwardToLastD e1 -> e1 forwardToLastD
+forwardToLastD eD -> eD forwardToLastD
+forwardToLastD e1 -> e1 forwardToLastD
+forwardToLastD e0 -> e0 forwardToLastD
+forwardToLastD e0 -> e0 forwardToLastD
+e0 forwardToLastD eE -> incD e0 eE
+e0 incD e0 -> checkCD e0 e1
+e1 checkCD e0 -> checkCD e1 e0
+eD checkCD e1 -> checkCD eD e1
+e1 checkCD eD -> checkCD e1 eD
+e0 checkCD e1 -> checkCD e0 e1
+e1 checkCD e0 -> checkCD e1 e0
+eC checkCD e1 -> checkCD eC e1
+checkCD eC -> eC eqCD
+eqCD e1 -> e& checkOneD
+checkOneD e0 -> e0 checkOneD
+checkOneD e1 -> e1 checkOneD
+checkOneD eD -> eD searchOne
+eD searchOne e1 -> backToDFromLeft eD e&
+e1 backToDFromLeft eD -> searchNextBit e1 eD
+e0 searchNextBit e1 -> searchNextBit e0 e1
+e& searchNextBit e0 -> searchNextBit e& e0
+searchNextBit e& -> e& eqCD
+eqCD e0 -> e% checkZeroD
+checkZeroD e1 -> e1 checkZeroD
+checkZeroD eD -> eD searchZero
+searchZero e& -> e& searchZero
+e& searchZero e0 -> backToDFromLeft e& e%
+eD backToDFromLeft e& -> backToDFromLeft eD e&
+e1 backToDFromLeft eD -> searchNextBit e1 eD
+e% searchNextBit e1 -> searchNextBit e% e1
+searchNextBit e% -> e% eqCD
+eqCD e1 -> e& checkOneD
+checkOneD eD -> eD searchOne
+searchOne e& -> e& searchOne
+searchOne e% -> e% searchOne
+e% searchOne e1 -> backToDFromLeft e% e&
+e& backToDFromLeft e% -> backToDFromLeft e& e%
+eD backToDFromLeft e& -> backToDFromLeft eD e&
+e& backToDFromLeft eD -> searchNextBit e& eD
+searchNextBit e& -> e& eqCD
+eqCD eD -> eD FINAL
+eD FINAL -> FINAL e FINAL
+FINAL e& -> FINAL e FINAL
+FINAL e% -> FINAL e FINAL
+FINAL e& -> FINAL e FINAL
+FINAL eE -> FINAL e FINAL
+FINAL eB -> FINAL e FINAL
+FINAL eB -> FINAL e FINAL
+FINAL eB -> FINAL e FINAL
+FINAL @@ -> FINAL @ FINAL
+e& FINAL -> FINAL e FINAL
+e% FINAL -> FINAL e FINAL
+e& FINAL -> FINAL e FINAL
+eC FINAL -> FINAL e FINAL
+11 FINAL -> FINAL 1 FINAL
+00 FINAL -> FINAL 0 FINAL
+11 FINAL -> FINAL 1 FINAL
+$$ FINAL -> FINAL $ FINAL
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e
+FINAL -> e

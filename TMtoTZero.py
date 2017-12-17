@@ -1,5 +1,4 @@
 import sys
-import json
 from collections import defaultdict
 
 # Turing machine configuration
@@ -12,7 +11,7 @@ try:
     for line in TM:
         states.add(line.split(',')[0])
         delta_function.append(line[:-1].split(','))
-    sigma_alphabet = '01$@'
+    sigma_alphabet = '01@$'
     gamma_alphabet = sigma_alphabet + 'BCDEX#%&'
     eps = 'e'
 except IOError:
@@ -21,7 +20,7 @@ except IOError:
 
 # Adding grammar rules
 res_grammar = defaultdict(list)
-res_grammar['A1'] += [start_state + ' A2']
+res_grammar['A1'] += ['$$' + ' ' + start_state + ' A2']
 res_grammar['A2'] += [a + a + ' A2' for a in sigma_alphabet] + ['A3']
 res_grammar['A3'] += [eps + 'B' + ' A3'] + [eps]
 
@@ -44,7 +43,7 @@ for final in final_states:
             res_grammar[a + C + ' ' + final] += [final + ' ' + a + ' ' + final]
             res_grammar[final + ' ' + a + C] += [final + ' ' + a + ' ' + final]
 
-with open('grammar', 'w') as f:
+with open('grammar.txt', 'w') as f:
     for k, v in res_grammar.items():
         for right in v:
             f.write(k + ' -> ' + right + '\n')

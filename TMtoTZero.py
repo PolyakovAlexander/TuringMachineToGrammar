@@ -1,3 +1,7 @@
+""""
+    Turing machine -> Type 0 grammar converter
+"""
+
 import sys
 from collections import defaultdict
 

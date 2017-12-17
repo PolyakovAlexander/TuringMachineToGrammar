@@ -1,3 +1,7 @@
+"""
+    Turing machine interpreter
+"""
+
 import sys
 from collections import defaultdict
 

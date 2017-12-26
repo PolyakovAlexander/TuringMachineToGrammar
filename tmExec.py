@@ -23,8 +23,8 @@ def check_tm(word):
                 splitted = line.split(',')
                 tmDelta[(splitted[0], splitted[1])] = splitted[2:]
 
-    pos = 1
-    state = 'filling'
+    pos = 0
+    state = 'start'
     tmp = word
     tmp = tmp[:pos] + ['>'] + tmp[pos:]
     print(' '.join(tmp) + ' ' + state)

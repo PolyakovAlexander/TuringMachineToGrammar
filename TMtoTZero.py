@@ -25,28 +25,31 @@ except IOError:
 
 # Adding grammar rules
 res_grammar = defaultdict(list)
-res_grammar['A1'] += [start_state + ' A2']
-res_grammar['A2'] += ['[' + a + a + ']' + ' A2' for a in sigma_alphabet] + ['A3']
-res_grammar['A3'] += ['[' + eps + 'B]' + ' A3'] + [eps]
+res_grammar['A1'] += [start_state + 'A2']
+res_grammar['A2'] += ['[' + a + a + ']' + 'A2' for a in sigma_alphabet] + ['A3']
+res_grammar['A3'] += ['[' + eps + 'B]' + 'A3'] + [eps]
 
 for (q, C, p, D, _) in filter(lambda x: x[4] == 'r', delta_function):
     for a in sigma_alphabet + eps:
-        res_grammar[q + ' [' + a + C + ']'] += \
-        ['[' + a + D + '] ' + p]
+        res_grammar[q + '[' + a + C + ']'] += \
+        ['[' + a + D + ']' + p]
 
 for (q, C, p, D, _) in filter(lambda x: x[4] == 'l', delta_function):
     for a in sigma_alphabet + eps:
         for b in sigma_alphabet + eps:
             for E in gamma_alphabet:
-                res_grammar['[' + b + E + '] ' + q + ' [' + a + C + ']'] += \
-                [p + ' [' + b + E + '] [' + a + D + ']']
+                res_grammar['[' + b + E + ']' + q + '[' + a + C + ']'] += \
+                [p + '[' + b + E + '][' + a + D + ']']
 
 for final in final_states:
     res_grammar[final] += [eps]
     for a in sigma_alphabet + eps:
         for C in gamma_alphabet:
-            res_grammar['[' + a + C + '] ' + final] += [final + ' ' + a + ' ' + final]
-            res_grammar[final + ' [' + a + C + ']'] += [final + ' ' + a + ' ' + final]
+            res_grammar['[' + a + C + ']' + final] += [final + a + final]
+            res_grammar[final + '[' + a + C + ']'] += [final + a + final]
+
+res_grammar['$final'] += [eps]
+res_grammar['final@'] += [eps]
 
 with open('grammarTypeZero.txt', 'w') as f:
     for k, v in res_grammar.items():

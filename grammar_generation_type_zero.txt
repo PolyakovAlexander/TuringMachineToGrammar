@@ -2,118 +2,118 @@
 /* Here '' - empty string is epsilon */
 /* Spawning 101 binary number */
 
-A1 -> start A2
-A2 -> [$$] A2
-A2 -> [11] A2
-A2 -> [00] A2
-A2 -> [11] A2
-A2 -> [@@] A2
+A1 -> startA2
+A2 -> [$$]A2
+A2 -> [11]A2
+A2 -> [00]A2
+A2 -> [11]A2
+A2 -> [@@]A2
 A2 -> A3
 A3 ->
-start [$$] -> [$$] filling
-filling [11] -> [1111] filling
-filling [00] -> [0000] filling
-filling [11] -> [1111] filling
-[1111] filling [@@] -> decDiv [1111] [@@]
-decDiv [1111] -> [1110] goToEnd
-[1110] goToEnd [@@] -> possibleOne [1110] [@@]
-[0000] possibleOne [1110] -> yetAnotherBack [0000] [1110]
-yetAnotherBack [0000] -> [0000] yetAnotherBack
-yetAnotherBack [1110] -> [1110] yetAnotherBack
-[1110] yetAnotherBack [@@] -> subSndThrd [1110] [@@]
-[0000] subSndThrd [1110] -> subSndThrd [0000] [1110]
-[1111] subSndThrd [0000] -> subSndThrd [1111] [0000]
-[$$] subSndThrd [1111] -> subSndThrd [$$] [1101]
-subSndThrd [$$] -> [$$] checkForZeroSnd
-checkForZeroSnd [1101] -> [1101] checkForZeroSnd
-checkForZeroSnd [0000] -> [0000] checkForZeroSnd
-checkForZeroSnd [1110] -> [1110] continue
-[1110] continue [@@] -> subSndThrd [1110] [@@]
-[0000] subSndThrd [1110] -> subSndThrd [0000] [1110]
-[1101] subSndThrd [0000] -> subSndThrd [1101] [0000]
-[$$] subSndThrd [1101] -> makeZaem [$$] [1111#]
-makeZaem [$$] -> [$$] restoreDivided
-restoreDivided [1111#] -> [1111] restoreDivided
-restoreDivided [0000] -> [0000] restoreDivided
-restoreDivided [1110] -> [1110] restoreDivided
-[1110] restoreDivided [@@] -> decDiv [1110] [@@]
-[0000] decDiv [1110] -> decDiv [0000] [1111]
-[1111] decDiv [0000] -> decDiv [1111] [0001]
-decDiv [1111] -> [1110] goToEnd
-goToEnd [0001] -> [0001] goToEnd
-goToEnd [1111] -> [1111] goToEnd
-[1111] goToEnd [@@] -> possibleOne [1111] [@@]
-[0001] possibleOne [1111] -> checkOne [0001] [1111]
-checkOne [0001] -> [0001] yetAnotherBack
-yetAnotherBack [1111] -> [1111] yetAnotherBack
-[1111] yetAnotherBack [@@] -> subSndThrd [1111] [@@]
-[0001] subSndThrd [1111] -> subSndThrd [0001] [1101]
-[1110] subSndThrd [0001] -> makeZaem [1110] [0011#]
-makeZaem [1110] -> [1100] restoreZaem
-[1100] restoreZaem [0011#] -> subSndThrd [1100] [0011]
-[$$] subSndThrd [1100] -> subSndThrd [$$] [1100]
-subSndThrd [$$] -> [$$] checkForZeroSnd
-checkForZeroSnd [1100] -> [1100] checkForZeroSnd
-checkForZeroSnd [0011] -> [0011] continue
-continue [1101] -> [1101] continue
-[1101] continue [@@] -> subSndThrd [1101] [@@]
-[0011] subSndThrd [1101] -> makeZaem [0011] [1111#]
-makeZaem [0011] -> [0001] restoreZaem
-[0001] restoreZaem [1111#] -> subSndThrd [0001] [1111]
-[1100] subSndThrd [0001] -> makeZaem [1100] [0011#]
-[$$] makeZaem [1100] -> makeZaem [$$] [1110]
-makeZaem [$$] -> [$$] restoreDivided
-restoreDivided [1110] -> [1110] restoreDivided
-restoreDivided [0011#] -> [0001] restoreDivided
-restoreDivided [1111] -> [1111] restoreDivided
-[1111] restoreDivided [@@] -> decDiv [1111] [@@]
-decDiv [1111] -> [1110] goToEnd
-[1110] goToEnd [@@] -> possibleOne [1110] [@@]
-[0001] possibleOne [1110] -> yetAnotherBack [0001] [1110]
-yetAnotherBack [0001] -> [0001] yetAnotherBack
-yetAnotherBack [1110] -> [1110] yetAnotherBack
-[1110] yetAnotherBack [@@] -> subSndThrd [1110] [@@]
-[0001] subSndThrd [1110] -> subSndThrd [0001] [1110]
-[1110] subSndThrd [0001] -> makeZaem [1110] [0011#]
-makeZaem [1110] -> [1100] restoreZaem
-[1100] restoreZaem [0011#] -> subSndThrd [1100] [0011]
-[$$] subSndThrd [1100] -> subSndThrd [$$] [1100]
-subSndThrd [$$] -> [$$] checkForZeroSnd
-checkForZeroSnd [1100] -> [1100] checkForZeroSnd
-checkForZeroSnd [0011] -> [0011] continue
-continue [1110] -> [1110] continue
-[1110] continue [@@] -> subSndThrd [1110] [@@]
-[0011] subSndThrd [1110] -> subSndThrd [0011] [1110]
-[1100] subSndThrd [0011] -> subSndThrd [1100] [0001]
-[$$] subSndThrd [1100] -> subSndThrd [$$] [1100]
-subSndThrd [$$] -> [$$] checkForZeroSnd
-checkForZeroSnd [1100] -> [1100] checkForZeroSnd
-checkForZeroSnd [0001] -> [0001] checkForZeroSnd
-checkForZeroSnd [1110] -> [1110] continue
-[1110] continue [@@] -> subSndThrd [1110] [@@]
-[0001] subSndThrd [1110] -> subSndThrd [0001] [1110]
-[1100] subSndThrd [0001] -> makeZaem [1100] [0011#]
-[$$] makeZaem [1100] -> makeZaem [$$] [1110]
-makeZaem [$$] -> [$$] restoreDivided
-restoreDivided [1110] -> [1110] restoreDivided
-restoreDivided [0011#] -> [0001] restoreDivided
-restoreDivided [1110] -> [1110] restoreDivided
-[1110] restoreDivided [@@] -> decDiv [1110] [@@]
-[0001] decDiv [1110] -> decDiv [0001] [1111]
-decDiv [0001] -> [0000] goToEnd
-goToEnd [1111] -> [1111] goToEnd
-[1111] goToEnd [@@] -> possibleOne [1111] [@@]
-[0000] possibleOne [1111] -> checkOne [0000] [1111]
-[1110] checkOne [0000] -> checkOne [1110] [0000]
-[$$] checkOne [1110] -> checkOne [$$] [1110]
-checkOne [$$] -> [$$] final
-[$$] final -> final $ final
-final [1110] -> final 1 final
-final [0000] -> final 0 final
-final [1111] -> final 1 final
-final [@@] -> final @ final
-final -> 
-final -> 
+start[$$] -> [$$]filling
+filling[11] -> [1111]filling
+filling[00] -> [0000]filling
+filling[11] -> [1111]filling
+[1111]filling[@@] -> decDiv[1111][@@]
+decDiv[1111] -> [1110]goToEnd
+[1110]goToEnd[@@] -> possibleOne[1110][@@]
+[0000]possibleOne[1110] -> yetAnotherBack[0000][1110]
+yetAnotherBack[0000] -> [0000]yetAnotherBack
+yetAnotherBack[1110] -> [1110]yetAnotherBack
+[1110]yetAnotherBack[@@] -> subSndThrd[1110][@@]
+[0000]subSndThrd[1110] -> subSndThrd[0000][1110]
+[1111]subSndThrd[0000] -> subSndThrd[1111][0000]
+[$$]subSndThrd[1111] -> subSndThrd[$$][1101]
+subSndThrd[$$] -> [$$]checkForZeroSnd
+checkForZeroSnd[1101] -> [1101]checkForZeroSnd
+checkForZeroSnd[0000] -> [0000]checkForZeroSnd
+checkForZeroSnd[1110] -> [1110]continue
+[1110]continue[@@] -> subSndThrd[1110][@@]
+[0000]subSndThrd[1110] -> subSndThrd[0000][1110]
+[1101]subSndThrd[0000] -> subSndThrd[1101][0000]
+[$$]subSndThrd[1101] -> makeZaem[$$][1111#]
+makeZaem[$$] -> [$$]restoreDivided
+restoreDivided[1111#] -> [1111]restoreDivided
+restoreDivided[0000] -> [0000]restoreDivided
+restoreDivided[1110] -> [1110]restoreDivided
+[1110]restoreDivided[@@] -> decDiv[1110][@@]
+[0000]decDiv[1110] -> decDiv[0000][1111]
+[1111]decDiv[0000] -> decDiv[1111][0001]
+decDiv[1111] -> [1110]goToEnd
+goToEnd[0001] -> [0001]goToEnd
+goToEnd[1111] -> [1111]goToEnd
+[1111]goToEnd[@@] -> possibleOne[1111][@@]
+[0001]possibleOne[1111] -> checkOne[0001][1111]
+checkOne[0001] -> [0001]yetAnotherBack
+yetAnotherBack[1111] -> [1111]yetAnotherBack
+[1111]yetAnotherBack[@@] -> subSndThrd[1111][@@]
+[0001]subSndThrd[1111] -> subSndThrd[0001][1101]
+[1110]subSndThrd[0001] -> makeZaem[1110][0011#]
+makeZaem[1110] -> [1100]restoreZaem
+[1100]restoreZaem[0011#] -> subSndThrd[1100][0011]
+[$$]subSndThrd[1100] -> subSndThrd[$$][1100]
+subSndThrd[$$] -> [$$]checkForZeroSnd
+checkForZeroSnd[1100] -> [1100]checkForZeroSnd
+checkForZeroSnd[0011] -> [0011]continue
+continue[1101] -> [1101]continue
+[1101]continue[@@] -> subSndThrd[1101][@@]
+[0011]subSndThrd[1101] -> makeZaem[0011][1111#]
+makeZaem[0011] -> [0001]restoreZaem
+[0001]restoreZaem[1111#] -> subSndThrd[0001][1111]
+[1100]subSndThrd[0001] -> makeZaem[1100][0011#]
+[$$]makeZaem[1100] -> makeZaem[$$][1110]
+makeZaem[$$] -> [$$]restoreDivided
+restoreDivided[1110] -> [1110]restoreDivided
+restoreDivided[0011#] -> [0001]restoreDivided
+restoreDivided[1111] -> [1111]restoreDivided
+[1111]restoreDivided[@@] -> decDiv[1111][@@]
+decDiv[1111] -> [1110]goToEnd
+[1110]goToEnd[@@] -> possibleOne[1110][@@]
+[0001]possibleOne[1110] -> yetAnotherBack[0001][1110]
+yetAnotherBack[0001] -> [0001]yetAnotherBack
+yetAnotherBack[1110] -> [1110]yetAnotherBack
+[1110]yetAnotherBack[@@] -> subSndThrd[1110][@@]
+[0001]subSndThrd[1110] -> subSndThrd[0001][1110]
+[1110]subSndThrd[0001] -> makeZaem[1110][0011#]
+makeZaem[1110] -> [1100]restoreZaem
+[1100]restoreZaem[0011#] -> subSndThrd[1100][0011]
+[$$]subSndThrd[1100] -> subSndThrd[$$][1100]
+subSndThrd[$$] -> [$$]checkForZeroSnd
+checkForZeroSnd[1100] -> [1100]checkForZeroSnd
+checkForZeroSnd[0011] -> [0011]continue
+continue[1110] -> [1110]continue
+[1110]continue[@@] -> subSndThrd[1110][@@]
+[0011]subSndThrd[1110] -> subSndThrd[0011][1110]
+[1100]subSndThrd[0011] -> subSndThrd[1100][0001]
+[$$]subSndThrd[1100] -> subSndThrd[$$][1100]
+subSndThrd[$$] -> [$$]checkForZeroSnd
+checkForZeroSnd[1100] -> [1100]checkForZeroSnd
+checkForZeroSnd[0001] -> [0001]checkForZeroSnd
+checkForZeroSnd[1110] -> [1110]continue
+[1110]continue[@@] -> subSndThrd[1110][@@]
+[0001]subSndThrd[1110] -> subSndThrd[0001][1110]
+[1100]subSndThrd[0001] -> makeZaem[1100][0011#]
+[$$]makeZaem[1100] -> makeZaem[$$][1110]
+makeZaem[$$] -> [$$]restoreDivided
+restoreDivided[1110] -> [1110]restoreDivided
+restoreDivided[0011#] -> [0001]restoreDivided
+restoreDivided[1110] -> [1110]restoreDivided
+[1110]restoreDivided[@@] -> decDiv[1110][@@]
+[0001]decDiv[1110] -> decDiv[0001][1111]
+decDiv[0001] -> [0000]goToEnd
+goToEnd[1111] -> [1111]goToEnd
+[1111]goToEnd[@@] -> possibleOne[1111][@@]
+[0000]possibleOne[1111] -> checkOne[0000][1111]
+[1110]checkOne[0000] -> checkOne[1110][0000]
+[$$]checkOne[1110] -> checkOne[$$][1110]
+checkOne[$$] -> [$$]final
+final[1110] -> final1final
+final[0000] -> final0final
+final[1111] -> final1final
+final[@@] -> final@final
+final@ -> 
+[$$]final -> final$final
+$final -> 
 final -> 
 final -> 
 final -> 

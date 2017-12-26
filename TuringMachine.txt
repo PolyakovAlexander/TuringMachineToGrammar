@@ -1,3 +1,4 @@
+start,$,filling,$,r
 filling,1,filling,111,r
 filling,0,filling,000,r
 filling,@,decDiv,@,l

@@ -7,7 +7,11 @@ from collections import defaultdict
 
 
 def check_tm(word):
-    word = '$' + word + 'B' * (3 * len(word) + 3) + '@'
+
+    curWord = []
+    for i in word:
+        curWord.append(i)
+    word = ['$'] + curWord + ['@']
     print(word)
     word = list(word)
     tmDelta = defaultdict(tuple)
@@ -20,7 +24,7 @@ def check_tm(word):
                 tmDelta[(splitted[0], splitted[1])] = splitted[2:]
 
     pos = 1
-    state = 'start'
+    state = 'filling'
     tmp = word
     tmp = tmp[:pos] + ['>'] + tmp[pos:]
     print(' '.join(tmp) + ' ' + state)
